@@ -4,27 +4,30 @@
 #include "Node.h"
 
 template<typename nodeType, typename edgeType>
-class Edge
+struct Edge
 {
-public:
-
-	Edge(std::shared_ptr<Node<nodeType>> start, std::shared_ptr<Node<nodeType>> end);
+	Edge();
+	Edge(edgeType edgeInfo, std::shared_ptr<Node<nodeType>> edgeStart, std::shared_ptr<Node<nodeType>> edgeEnd);
 
 	edgeType info;
+	std::shared_ptr<Node<nodeType>> start;
+	std::shared_ptr<Node<nodeType>> end;
+};
 
-private:
 
-	//smart pointers so we don't have to worry about deleting the memory
-	std::shared_ptr<Node<nodeType>> _start;
-	std::shared_ptr<Node<nodeType>> _end;
-
+template<typename nodeType, typename edgeType>
+Edge<nodeType, edgeType>::Edge() {
+	//do nothing
 };
 
 template<typename nodeType, typename edgeType>
-inline Edge<nodeType, edgeType>::Edge(std::shared_ptr<Node<nodeType>> start, std::shared_ptr<Node<nodeType>> end)
+inline Edge<nodeType, edgeType>::Edge(edgeType edgeInfo, 
+	std::shared_ptr<Node<nodeType>> edgeStart, 
+	std::shared_ptr<Node<nodeType>> edgeEnd)
 {
-	this->_start = start;
-	this->_end = end;
-}
+	info = edgeInfo;
+	start = edgeStart;
+	end = edgeEnd;
+};
 
 

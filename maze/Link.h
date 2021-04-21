@@ -21,6 +21,10 @@ struct Link {
         this->transport = transport;
     }
 
+    Link() {
+        //do nothing
+    }
+
     Color color;
     Transport transport;
 };

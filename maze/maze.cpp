@@ -1,5 +1,6 @@
 
 #include <iostream>
+#include "fileReader.h"
 #include "Graph.h"
 #include "Link.h"
 
@@ -7,11 +8,13 @@
 
 int main()
 {
+    
     Graph<char, Link> g = Graph<char, Link>();
+    FileReader fileReader = FileReader("example.txt", g);
 
-    //g.addEdge(link(Color::RED, Transport::HORSE), 'a', 'b');
-
-    std::cout << "Hello World!\n";
+    for (auto stations : g.dfsPath('A', 'j')) {
+        std::cout << stations->getName() << " ";
+    }
 }
 
 
